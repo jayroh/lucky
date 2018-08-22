@@ -9,10 +9,6 @@ class HTTP::Server::Context
   getter debug_messages : Array(String) = [] of String
   property? hide_from_logs : Bool = false
 
-  def cookies
-    @cookies ||= Lucky::Cookies::Store.build(request, Lucky::Server.settings.secret_key_base)
-  end
-
   def session
     @session ||= Lucky::Session::Store.new(cookies).build
   end
